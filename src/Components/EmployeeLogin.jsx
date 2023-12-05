@@ -13,7 +13,7 @@ const EmployeeLogin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/api_4/login/", values)
+      .post("http://13.239.116.110:8000/api_4/login/", values)
       .then((result) => {
         if (result.data.token) {
           localStorage.setItem("token", result.data.token);

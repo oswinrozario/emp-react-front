@@ -18,7 +18,7 @@ const AddEmployee = () => {
     formData.append("salary", employee.salary);
 
     axios
-      .post("http://127.0.0.1:8000/api_4/employee_api/", formData)
+      .post("http://13.239.116.110:8000/api_4/employee_api/", formData)
       .then((result) => {
         if (result.data) {
           navigate("/dashboard/employee");

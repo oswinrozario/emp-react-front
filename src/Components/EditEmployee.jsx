@@ -13,7 +13,7 @@ const EditEmployee = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api_4/employee_api/" + id)
+      .get("http://13.239.116.110:8000/api_4/employee_api/" + id)
       .then((result) => {
         setEmployee({
           ...employee,

@@ -8,7 +8,7 @@ const Employee = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api_4/employee_api/")
+      .get("http://13.239.116.110:8000/api_4/employee_api/")
       .then((result) => {
         if (result.data) {
           setEmployee(result.data);
@@ -20,7 +20,7 @@ const Employee = () => {
   }, []);
   const handleDelete = (id) => {
     axios
-      .delete("http://127.0.0.1:8000/api_4/employee_api/" + id)
+      .delete("http://13.239.116.110:8000/api_4/employee_api/" + id)
       .then((result) => {
         if (result.status == "204") {
           window.location.reload(false);

@@ -8,7 +8,7 @@ const EmployeeDetail = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3000/employee/detail/" + id)
+      .get("http://13.239.116.110:8000/api_4/employee_api/" + id)
       .then((result) => {
         setEmployee(result.data);
       })
