@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import config from "../config.js";
 
 const AddCategory = () => {
   const [category, setCategory] = useState();
@@ -9,7 +10,7 @@ const AddCategory = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://13.239.116.110:3000/departments", { name: category })
+      .post(config.BASE_URL2 + "departments", { name: category })
       .then((result) => {
         if (result.data) {
           navigate("/dashboard/category");

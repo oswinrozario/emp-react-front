@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import config from "../config.js";
 
 const EditEmployee = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const EditEmployee = () => {
 
   useEffect(() => {
     axios
-      .get("http://13.239.116.110:8000/api_4/employee_api/" + id)
+      .get(config.BASE_URL1 + "api_4/employee_api/" + id + "/")
       .then((result) => {
         setEmployee({
           ...employee,
@@ -33,7 +34,7 @@ const EditEmployee = () => {
     formData.append("salary", employee.salary);
 
     axios
-      .put("http://127.0.0.1:8000/api_4/employee_api/" + id, formData)
+      .put(config.BASE_URL1 + "/api_4/employee_api/" + id + "/", formData)
       .then((result) => {
         console.log(result);
         if (result.data) {

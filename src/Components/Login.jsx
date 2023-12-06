@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import config from "../config.js";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -13,16 +14,19 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://13.239.116.110:8000/api_4/login/", values)
+      .post(config.BASE_URL1 + "api_4/login/", values, {
+        validateStatus: false,
+      })
       .then((result) => {
+        console.log(result);
         if (result.data.token) {
           localStorage.setItem("valid", result.data.token);
           navigate("/dashboard");
         } else {
-          setError(result.data.Error);
+          setError("Invalid Login Credentials");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError("Invalid Login Credentials"));
   };
 
   return (

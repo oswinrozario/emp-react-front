@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import config from "../config.js";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/departments")
+      .get(config.BASE_URL2 + "departments")
       .then((result) => {
         if (result.data) {
           setCategory(result.data);
@@ -23,7 +24,7 @@ const Category = () => {
         <h3>Cetegory List</h3>
       </div>
       <Link to="/dashboard/add_category" className="btn btn-success">
-        Add Cetegory
+        Add Category
       </Link>
       <div className="mt-3">
         <table className="table">

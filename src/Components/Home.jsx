@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import config from "../config.js";
 
 const Home = () => {
   const [employeeTotal, setemployeeTotal] = useState(0);
@@ -11,29 +12,25 @@ const Home = () => {
   }, []);
 
   const employeeCount = () => {
-    axios
-      .get("http://13.239.116.110:8000/api_4/employee_api/")
-      .then((result) => {
-        if (result.data) {
-          setemployeeTotal(Object.keys(result.data).length);
-        }
-      });
+    axios.get(config.BASE_URL1 + "api_4/employee_api/").then((result) => {
+      if (result.data) {
+        setemployeeTotal(Object.keys(result.data).length);
+      }
+    });
   };
   const salaryCount = () => {
-    axios
-      .get("http://13.239.116.110:8000/api_4/employee_api/")
-      .then((result) => {
-        if (result.data) {
-          let valueAdded = 0;
-          for (let i = 0; i < Object.keys(result.data).length; i++) {
-            let count = parseInt(result.data[i].salary);
-            valueAdded += count;
-          }
-          setSalaryTotal(valueAdded);
-        } else {
-          alert(result.data.Error);
+    axios.get(config.BASE_URL1 + "api_4/employee_api/").then((result) => {
+      if (result.data) {
+        let valueAdded = 0;
+        for (let i = 0; i < Object.keys(result.data).length; i++) {
+          let count = parseInt(result.data[i].salary);
+          valueAdded += count;
         }
-      });
+        setSalaryTotal(valueAdded);
+      } else {
+        alert(result.data.Error);
+      }
+    });
   };
   return (
     <div>

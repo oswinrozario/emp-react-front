@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import config from "../config.js";
 
 const EmployeeDetail = () => {
   const [employee, setEmployee] = useState([]);
@@ -8,7 +9,7 @@ const EmployeeDetail = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://13.239.116.110:8000/api_4/employee_api/" + id)
+      .get(config.BASE_URL1 + "api_4/employee_api/" + id)
       .then((result) => {
         setEmployee(result.data);
       })
@@ -24,9 +25,10 @@ const EmployeeDetail = () => {
         <h4>Emoployee Management System</h4>
       </div>
       <div className="d-flex justify-content-center flex-column align-items-center mt-3">
-        <div className="d-flex align-items-center flex-column mt-5">
+        <div className="d-flex align-items-left flex-column mt-5">
+          <h3>ID: {employee.id}</h3>
           <h3>Name: {employee.name}</h3>
-          <h3>Email: {employee.email}</h3>
+          <h3>Profile: {employee.profile}</h3>
           <h3>Salary: ${employee.salary}</h3>
         </div>
         <div>

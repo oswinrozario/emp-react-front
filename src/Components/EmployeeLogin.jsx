@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import config from "../config";
 
 const EmployeeLogin = () => {
   const [values, setValues] = useState({
@@ -13,16 +14,19 @@ const EmployeeLogin = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://13.239.116.110:8000/api_4/login/", values)
+      .post(config.BASE_URL1 + "api_4/employee_login/", values, {
+        validateStatus: false,
+      })
       .then((result) => {
-        if (result.data.token) {
-          localStorage.setItem("token", result.data.token);
-          navigate("/employee_detail/" + result.data.id);
+        const { message, employee, token } = result.data;
+        if (message === "Login successful" && token) {
+          localStorage.setItem("token", token);
+          navigate("/employee_detail/" + employee.id);
         } else {
-          setError(result.data.Error);
+          setError(result.data.message);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(result.data.message));
   };
 
   return (

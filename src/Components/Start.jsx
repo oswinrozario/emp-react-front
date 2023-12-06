@@ -11,7 +11,7 @@ const Start = () => {
       <div className="p-3 rounded w-25 border loginForm">
         <h2 className="text-center">Login As</h2>
         <div className="d-flex justify-content-center mt-5 mb-2">
-          {/* <button
+          <button
             type="button"
             className="btn btn-primary"
             onClick={() => {
@@ -19,7 +19,9 @@ const Start = () => {
             }}
           >
             Employee
-          </button> */}
+          </button>
+        </div>
+        <div className="d-flex justify-content-center mt-5 mb-2">
           <button
             type="button"
             className="btn btn-success"

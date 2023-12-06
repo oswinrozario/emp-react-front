@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import config from "../config.js";
 
 const Employee = () => {
   const [employee, setEmployee] = useState([]);
@@ -8,7 +9,7 @@ const Employee = () => {
 
   useEffect(() => {
     axios
-      .get("http://13.239.116.110:8000/api_4/employee_api/")
+      .get(config.BASE_URL1 + "api_4/employee_api/")
       .then((result) => {
         if (result.data) {
           setEmployee(result.data);
@@ -20,10 +21,10 @@ const Employee = () => {
   }, []);
   const handleDelete = (id) => {
     axios
-      .delete("http://13.239.116.110:8000/api_4/employee_api/" + id)
+      .delete(config.BASE_URL1 + "api_4/employee_api/" + id + "/")
       .then((result) => {
         if (result.status == "204") {
-          window.location.reload(false);
+          navigate("/dashboard");
         } else {
           alert(result.data.Error);
         }

@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import config from "../config.js";
 
 const AddEmployee = () => {
   const [employee, setEmployee] = useState({
     name: "",
     salary: "",
     profile: "",
+    email: "",
+    password: "",
   });
   const navigate = useNavigate();
 
@@ -16,9 +19,11 @@ const AddEmployee = () => {
     formData.append("name", employee.name);
     formData.append("profile", employee.profile);
     formData.append("salary", employee.salary);
+    formData.append("email", employee.email);
+    formData.append("password", employee.password);
 
     axios
-      .post("http://13.239.116.110:8000/api_4/employee_api/", formData)
+      .post(config.BASE_URL1 + "api_4/employee_api/", formData)
       .then((result) => {
         if (result.data) {
           navigate("/dashboard/employee");
@@ -76,6 +81,36 @@ const AddEmployee = () => {
               autoComplete="off"
               onChange={(e) =>
                 setEmployee({ ...employee, profile: e.target.value })
+              }
+            />
+          </div>
+          <div className="col-12">
+            <label for="inputPassword" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              className="form-control rounded-0"
+              id="inputEmail"
+              placeholder="Enter email"
+              autoComplete="off"
+              onChange={(e) =>
+                setEmployee({ ...employee, email: e.target.value })
+              }
+            />
+          </div>
+          <div className="col-12">
+            <label for="inputPassword" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control rounded-0"
+              id="inputPassword"
+              placeholder="Enter password"
+              autoComplete="off"
+              onChange={(e) =>
+                setEmployee({ ...employee, password: e.target.value })
               }
             />
           </div>
