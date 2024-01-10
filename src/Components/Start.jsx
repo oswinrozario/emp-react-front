@@ -18,7 +18,7 @@ const Start = () => {
               navigate("/employee_login");
             }}
           >
-            Employee
+            Register
           </button>
         </div>
         <div className="d-flex justify-content-center mt-5 mb-2">
@@ -29,7 +29,7 @@ const Start = () => {
               navigate("/adminlogin");
             }}
           >
-            Manager
+            Login
           </button>
         </div>
       </div>

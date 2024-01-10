@@ -25,8 +25,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Start />}></Route>
         <Route path="/adminlogin" element={<Login />}></Route>
-        <Route path="/employee_login" element={<EmployeeLogin />}></Route>
-        <Route path="/employee_detail/:id" element={<EmployeeDetail />}></Route>
         <Route
           path="/dashboard"
           element={
@@ -35,7 +33,6 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route path="" element={<Home />}></Route>
           <Route path="/dashboard/employee" element={<Employee />}></Route>
           <Route path="/dashboard/category" element={<Category />}></Route>
 
@@ -53,15 +50,6 @@ function App() {
           ></Route>
         </Route>
       </Routes>
-      <HeaderComponent />
-      <div className="container">
-        <Routes>
-          <Route path="/employee" element={<ListEmployeeComponent />} />
-          <Route path="/add-employee" element={<AddEmployeeComponent />} />
-          <Route path="/add-employee/:id" element={<AddEmployeeComponent />} />
-        </Routes>
-      </div>
-      <FooterComponent />
     </BrowserRouter>
   );
 }

@@ -14,13 +14,12 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(config.BASE_URL1 + "api_4/login/", values, {
+      .post(config.BASE_URL1 + "api/login/", values, {
         validateStatus: false,
       })
       .then((result) => {
-        console.log(result);
-        if (result.data.token) {
-          localStorage.setItem("valid", result.data.token);
+        if (result.data.access_token) {
+          localStorage.setItem("token", result.data.access_token);
           navigate("/dashboard");
         } else {
           setError("Invalid Login Credentials");
@@ -65,12 +64,6 @@ const Login = () => {
           <button className="btn btn-success w-100 rounded-0 mb-2">
             Log in
           </button>
-          <div className="mb-1">
-            <input type="checkbox" name="tick" id="tick" className="me-2" />
-            <label htmlFor="password">
-              You are Agree with terms & conditions
-            </label>
-          </div>
         </form>
       </div>
     </div>

@@ -4,10 +4,10 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 
 const Dashboard = () => {
-  const anvigate = useNavigate();
+  const nanvigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("valid");
-    anvigate("/");
+    localStorage.removeItem("token");
+    nanvigate("/");
   };
   return (
     <div className="container-fluid">
